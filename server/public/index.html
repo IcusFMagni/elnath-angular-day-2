@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
-    <script src="scripts/script.js"></script>
-    <title>Document</title>
+    <script type="text/javascript" src="vendors/angular.min.js"></script>
+    <script src="scripts/client.js"></script>
+    <title>Angular HTTP</title>
 </head>
-<body>
-    
+<h1>Angular HTTP</h1>
+<body ng-app="RestaurantApp" ng-controller="FoodController as vm">
+    {{3+3}}
+    <p>vm.foodArray: {{vm.foodArray}}</p>
+    <h2>Food List</h2>
+    <input type="text" ng-model="vm.newFood.name" placeholder="name">
+    <input type="number" ng-model="vm.newFood.deliciousness_rating" placeholder="How Yummy">
+    <label>Is it hot?</label>
+    <input type="checkbox" ng-model="vm.newFood.is_hot">
+    <button ng-click="vm.addFood(vm.newFood)">Add FOODS!</button>
+    {{vm.newFood}}
+    <ul>
+        <li ng-repeat="food in vm.foodArray">
+            {{food.name}} 
+            <span ng-show="food.is_hot">is really hot!</span>
+            <span ng-hide="food.is_hot">is not hot</span>
+            and 
+            {{food.deliciousness_rating > 80 ? "is super delicious" : "is pretty good"}}
+        </li>
+    </ul>
 </body>
 </html>
